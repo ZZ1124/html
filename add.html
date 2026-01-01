@@ -32,19 +32,20 @@
 </head>
 <body>
 
-<a id="qx-link">点击导入 Quantumult X</a>
+<a id="qx-link">点击导入 Quantumult X</button>
 
 <script>
   // 读取 ?qx= 后面的内容
   const params = new URLSearchParams(location.search);
   const qx = params.get("qx");
 
-  if (qx) {
-    // 必须是 quantumult.app / quantumult-x scheme
-    document.getElementById("qx-link").href =
-      "https://quantumult.app/x/open-app/" + qx;
+  if (!qx) {
+    document.getElementById("btn").innerText = "参数缺失";
   } else {
-    document.getElementById("qx-link").innerText = "参数错误";
+    document.getElementById("btn").onclick = () => {
+      const url = "https://quantumult.app/x/open-app/" + qx;
+      window.location.href = url;
+    };
   }
 </script>
 
