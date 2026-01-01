@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Quantumult X Add Resource</title>
+</head>
+<body>
+
+<h2>Quantumult X 添加资源</h2>
+<button id="btn">点击添加到 Quantumult X</button>
+
+<script>
+  const params = new URLSearchParams(location.search);
+  const data = params.get("data");
+
+  document.getElementById("btn").onclick = function () {
+    if (!data) {
+      alert("缺少 data 参数");
+      return;
+    }
+    location.href =
+      "https://quantumult.app/x/open-app/add-resource?remote-resource=" + data;
+  };
+</script>
+
+</body>
+</html>
