@@ -1,27 +1,67 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>Quantumult X Add Resource</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Quantumult X 导入</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #0f0f0f;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    a.button {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      padding: 18px 20px;
+      text-align: center;
+      background: #0a84ff;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 16px;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(10,132,255,0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    a.button:active {
+      transform: scale(0.97);
+      box-shadow: 0 4px 10px rgba(10,132,255,0.3);
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <a id="qx-link" class="button" href="#">
+      点击导入 Quantumult X
+    </a>
+  </div>
 
-<h2>Quantumult X 添加资源</h2>
-<button id="btn">点击添加到 Quantumult X</button>
+  <script>
+    // 从 URL 参数中读取 add-resource 链接
+    const params = new URLSearchParams(window.location.search);
+    const qxUrl = params.get("qx");
 
-<script>
-  const params = new URLSearchParams(location.search);
-  const data = params.get("data");
-
-  document.getElementById("btn").onclick = function () {
-    if (!data) {
-      alert("缺少 data 参数");
-      return;
+    if (qxUrl) {
+      document.getElementById("qx-link").href = qxUrl;
+    } else {
+      document.getElementById("qx-link").textContent = "未检测到导入链接";
     }
-    location.href =
-      "https://quantumult.app/x/open-app/add-resource?remote-resource=" + data;
-  };
-</script>
-
+  </script>
 </body>
 </html>
