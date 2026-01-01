@@ -3,72 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quantumult X 添加资源</title>
-
+  <title>Quantumult X 导入</title>
   <style>
     html, body {
       margin: 0;
-      padding: 0;
       width: 100%;
       height: 100%;
       display: flex;
-      justify-content: center;
       align-items: center;
-      background: #f5f5f7;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif;
-    }
-
-    .card {
-      background: white;
-      padding: 28px 24px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-      text-align: center;
-      max-width: 90%;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 24px;
-      background: #007aff;
+      justify-content: center;
+      background: #0f172a;
       color: white;
-      border-radius: 12px;
-      text-decoration: none;
-      font-size: 17px;
-      font-weight: 600;
+      font-family: -apple-system, BlinkMacSystemFont;
     }
-
-    .btn:active {
-      opacity: 0.85;
-    }
-
-    .desc {
-      color: #666;
-      font-size: 14px;
-      margin-top: 8px;
+    button {
+      font-size: 18px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      border: none;
+      background: #3b82f6;
+      color: white;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <div>准备添加 Quantumult X 资源</div>
-    <div class="desc">点击下方按钮后将跳转到 Quantumult X</div>
-    <a id="qxLink" class="btn" href="#">点击添加</a>
-  </div>
+<button id="btn">点击导入 Quantumult X</button>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const qx = params.get("qx");
+<script>
+  const params = new URLSearchParams(location.search);
+  const qx = params.get("qx");
 
-    if (qx) {
-      const fullUrl = "quantumult-x:///" + qx;
-      document.getElementById("qxLink").href = fullUrl;
-    } else {
-      document.querySelector(".desc").innerText = "未检测到参数";
-    }
-  </script>
+  if (!qx) {
+    document.getElementById("btn").innerText = "参数缺失";
+  } else {
+    document.getElementById("btn").onclick = () => {
+      const url = "https://quantumult.app/x/open-app/" + qx;
+      window.location.href = url;
+    };
+  }
+</script>
 
 </body>
 </html>
