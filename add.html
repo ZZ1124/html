@@ -1,51 +1,50 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>导入 Quantumult X</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  body {
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: -apple-system, BlinkMacSystemFont;
-  }
-  button {
-    font-size: 18px;
-    padding: 14px 28px;
-    border-radius: 12px;
-    border: none;
-    background: #3478f6;
-    color: #fff;
-  }
-</style>
+  <meta charset="UTF-8">
+  <title>导入 Quantumult X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial;
+      background: #f5f5f7;
+    }
+    a {
+      display: inline-block;
+      padding: 16px 24px;
+      background: #007aff;
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      border-radius: 12px;
+    }
+    a:active {
+      opacity: 0.7;
+    }
+  </style>
 </head>
-
 <body>
 
-<button id="btn">点击导入 Quantumult X</button>
+<a id="qx-link">点击导入 Quantumult X</a>
 
 <script>
+  // 读取 ?qx= 后面的内容
   const params = new URLSearchParams(location.search);
   const qx = params.get("qx");
 
-  if (!qx) {
-    document.body.innerHTML = "参数错误";
+  if (qx) {
+    // 必须是 quantumult.app / quantumult-x scheme
+    document.getElementById("qx-link").href =
+      "https://quantumult.app/x/open-app/" + qx;
   } else {
-    const target = "quantumult.app://x/open-app/" + qx;
-
-    // 自动尝试跳转（像 ddgksf2013）
-    setTimeout(() => {
-      location.href = target;
-    }, 300);
-
-    // 兜底：手动点一次
-    document.getElementById("btn").onclick = () => {
-      location.href = target;
-    };
+    document.getElementById("qx-link").innerText = "参数错误";
   }
 </script>
 
