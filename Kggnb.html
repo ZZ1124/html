@@ -76,9 +76,15 @@
 
         <br><br>
 
-        <a href="itms-services://?action=download-manifest&url=https://www.pgyer.com/app/plist/dfa16cf874f9592889b9185ebd013d5f/install//s.plist?" download>
-            <button class="download-btn">点击这里下载</button>
-        </a>
+       <!-- 删除 <a> 标签 -->
+        <button class="download-btn" id="downloadBtn">点击这里下载</button>
+        
+        <script>
+        document.getElementById("downloadBtn").addEventListener("click", function() {
+            // 点击时自动跳转到 itms-services
+            window.location.href = "itms-services://?action=download-manifest&url=https://www.pgyer.com/app/plist/dfa16cf874f9592889b9185ebd013d5f/install//s.plist?";
+        });
+        </script>
 
         <br><br><br>
 
