@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ZZ1124 规则 - 去广告 / 重写 / 净化</title>
+  <title>ZZ1124</title>
   <style>
     body {
       font-family: system-ui, -apple-system, sans-serif;
@@ -70,22 +70,21 @@
 </head>
 <body>
 
-  <h1>ZZ1124 Rules</h1>
+  <h1>ZZ1124</h1>
   <p class="intro">iOS 去广告 / 重写 / 净化规则合集<br>点击卡片 → 一键导入 Quantumult X</p>
 
   <div class="card-container">
 
-    <div class="card" data-qx="https://github.com/ZZ1124/Rules/raw/main/QX/Kugou_gnb_new.conf?tag=酷狗概念版最新版@ZZ1124">
-      <h2>酷狗概念版 - 最新版净化</h2>
+    <div class="card" data-qx="https://quantumult.app/x/open-app/quantumult-x:///add-resource?remote-resource=%7B%0A%20%20%22rewrite_remote%22%3A%20%5B%0A%20%20%20%20%22https%3A%2F%2Fraw.githubusercontent.com%2FZZ1124%2FRules%2Fmain%2FQX%2FKugou_gnb_new.conf,%20tag%3D%E9%85%B7%E7%8B%97%E6%A6%82%E5%BF%B5%E7%89%88%40ZZ1124,%20update-interval%3D86400,%20opt-parser%3Dtrue,%20enabled%3Dtrue%22%0A%20%20%5D%0A%7D">
+      <h2>酷狗概念版 - 新版 5.1.41</h2>
       <p>去除开屏广告、会员弹窗、推荐推送、各种骚扰，实现接近纯净的音乐体验</p>
-      <p><strong>更新日期：</strong> 2026-01-26（适配当时最新版本）</p>
-      <span class="import-btn">导入到 Quantumult X</span>
+      <p><strong>更新日期：</strong> 2026-01-26</p>
     </div>
 
     <div class="card" data-qx="https://github.com/ZZ1124/Rules/raw/main/QX/Kugou_gnb_old.conf?tag=酷狗概念版2.4.5@ZZ1124">
       <h2>酷狗概念版 - 旧版 2.4.5</h2>
       <p>针对 2.4.5 版本完整净化：开屏、弹窗、推送、推荐全部覆盖</p>
-      <p><strong>旧版 App 下载：</strong> <a href="https://zz1124.github.io/html/Kggnb.html" target="_blank" style="color:#1a73e8;">点此查看</a></p>
+      <p><strong>旧版 2.4.5 下载：</strong> <a href="https://zz1124.github.io/html/Kggnb.html" target="_blank" style="color:#1a73e8;">点此查看</a></p>
     </div>
 
     <!-- 新规则继续加类似 <div class="card" data-qx="..."> 结构 -->
@@ -96,35 +95,5 @@
     <p>仓库地址：<a href="https://github.com/ZZ1124/Rules" target="_blank" style="color:#1a73e8;">https://github.com/ZZ1124/Rules</a></p>
     <p>© ZZ1124 | 规则仅供学习交流，如导入失败请检查 Quantumult X 是否已安装并更新</p>
   </div>
-
-  <script>
-    document.querySelectorAll('.card').forEach(card => {
-      card.addEventListener('click', () => {
-        const rawUrl = card.getAttribute('data-qx');
-        if (!rawUrl) {
-          alert('规则链接缺失');
-          return;
-        }
-
-        // 构造 Quantumult X 导入所需的 JSON 结构（remote-resource）
-        const config = {
-          "remote-resource": {
-            "rule": [rawUrl]
-          }
-        };
-
-        // JSON → base64
-        const jsonStr = JSON.stringify(config);
-        const base64 = btoa(unescape(encodeURIComponent(jsonStr)));  // 处理中文编码
-
-        // 拼接 open-app URL
-        const importUrl = "https://quantumult.app/x/open-app/" + base64;
-
-        // 跳转
-        window.location.href = importUrl;
-      });
-    });
-  </script>
-
 </body>
 </html>
